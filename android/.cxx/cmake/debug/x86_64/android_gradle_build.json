@@ -1,0 +1,38 @@
+
+{
+	"buildFiles" : [ "/Users/kmww/WorkSpace/flutter_mavlink/android/CMakeLists.txt" ],
+	"cleanCommands" : 
+	[
+		"/Users/kmww/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/kmww/WorkSpace/flutter_mavlink/android/.cxx/cmake/debug/x86_64 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"flutter_mavlink-Debug-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "flutter_mavlink",
+			"buildCommand" : "/Users/kmww/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/kmww/WorkSpace/flutter_mavlink/android/.cxx/cmake/debug/x86_64 --target flutter_mavlink",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android21 --gcc-toolchain=/Users/kmww/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/kmww/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dflutter_mavlink_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp",
+					"workingDirectory" : "/Users/kmww/WorkSpace/flutter_mavlink/android/.cxx/cmake/debug/x86_64"
+				}
+			],
+			"output" : "/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/x86_64/libflutter_mavlink.so",
+			"toolchain" : "2097840068312324956"
+		}
+	},
+	"toolchains" : 
+	{
+		"2097840068312324956" : 
+		{
+			"cCompilerExecutable" : "/Users/kmww/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/kmww/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}

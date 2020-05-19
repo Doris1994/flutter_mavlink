@@ -1,0 +1,23 @@
+# ninja log v5
+1	1850	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+1854	1949	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+37	1942	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+1942	2048	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+23	758	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+758	822	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+14	661	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+661	722	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+16	677	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+677	732	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+1	826	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+826	893	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+10	647	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+647	699	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+2	706	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+707	780	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+2	703	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+704	754	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+2	836	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+836	895	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209
+1	594	0	CMakeFiles/flutter_mavlink.dir/Users/kmww/WorkSpace/flutter_mavlink/ios/Classes/native_mavlink.cpp.o	6e55133a70f11f18
+594	645	0	/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so	93e3bf6864752209

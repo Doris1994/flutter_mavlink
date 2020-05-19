@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "/Users/kmww/WorkSpace/flutter_mavlink/android/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/kmww/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/kmww/WorkSpace/flutter_mavlink/android/.cxx/cmake/debug/x86 --target clean"
+  ],
+  "libraries": {
+    "flutter_mavlink-Debug-x86": {
+      "artifactName": "flutter_mavlink",
+      "buildCommand": "/Users/kmww/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/kmww/WorkSpace/flutter_mavlink/android/.cxx/cmake/debug/x86 --target flutter_mavlink",
+      "abi": "x86",
+      "output": "/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/x86/libflutter_mavlink.so"
+    }
+  }
+}

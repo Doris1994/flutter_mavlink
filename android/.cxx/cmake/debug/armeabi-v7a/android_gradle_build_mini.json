@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "/Users/kmww/WorkSpace/flutter_mavlink/android/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/kmww/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/kmww/WorkSpace/flutter_mavlink/android/.cxx/cmake/debug/armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "flutter_mavlink-Debug-armeabi-v7a": {
+      "artifactName": "flutter_mavlink",
+      "buildCommand": "/Users/kmww/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/kmww/WorkSpace/flutter_mavlink/android/.cxx/cmake/debug/armeabi-v7a --target flutter_mavlink",
+      "abi": "armeabi-v7a",
+      "output": "/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/armeabi-v7a/libflutter_mavlink.so"
+    }
+  }
+}

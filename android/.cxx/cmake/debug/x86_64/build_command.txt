@@ -1,0 +1,14 @@
+Executable : /Users/kmww/Library/Android/sdk/cmake/3.6.4111459/bin/cmake
+arguments : 
+-H/Users/kmww/WorkSpace/flutter_mavlink/android
+-B/Users/kmww/WorkSpace/flutter_mavlink/android/.cxx/cmake/debug/x86_64
+-DANDROID_ABI=x86_64
+-DANDROID_PLATFORM=android-16
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/kmww/WorkSpace/flutter_mavlink/example/build/flutter_mavlink/intermediates/cmake/debug/obj/x86_64
+-DCMAKE_BUILD_TYPE=Debug
+-DANDROID_NDK=/Users/kmww/Library/Android/sdk/ndk-bundle
+-DCMAKE_TOOLCHAIN_FILE=/Users/kmww/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/Users/kmww/Library/Android/sdk/cmake/3.6.4111459/bin/ninja
+-GAndroid Gradle - Ninja
+jvmArgs : 
+
