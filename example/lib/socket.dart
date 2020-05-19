@@ -77,7 +77,7 @@ class UdpSocketManager {
         return;
       }
     }
-    List<int> data = packMavLinkMsgToBuffer2(0);
+    List<int> data = packMavLinkMsgToBuffer(0);
     var toAddress = InternetAddress("192.168.1.151");
     _udpSocket.send(data, toAddress, 14550);
   }
@@ -91,7 +91,7 @@ class UdpSocketManager {
       //   print('heartbeat type:${msg.type} base_mode:${msg.base_mode} system_status :${msg.system_status}');
       //   return;
       // }
-      int msgId = getMavLinkMsgFromBuffer2(dg.data);
+      int msgId = getMavLinkMsgFromBuffer(dg.data);
       print('received msgId :$msgId');
       switch (msgId) {
         case MAVLINK_MSG_ID_HEARTBEAT:
@@ -125,7 +125,7 @@ class UdpSocketManager {
     // requestModel.toHost = destinationIp;
     // requestModel.fromHost = _wifiIP;
     //List<int> data = SocketDataParser.encodeDataModel(requestModel);  
-    List<int> data = packMavLinkMsgToBuffer2(0);
+    List<int> data = packMavLinkMsgToBuffer(0);
     _udpSocket.send(data, destinationAddress, 14550);
   }
 

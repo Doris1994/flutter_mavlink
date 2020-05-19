@@ -23,19 +23,9 @@ final void Function() resetMsgBuffer =
     .lookup<NativeFunction<Void Function()>>("resetBuffer")
     .asFunction();
 
-final int Function(Pointer<Uint8> buf) encodeHeartBeatMsg =  
+final Pointer<Uint8> Function(Pointer<Uint16> length) encodeHeartBeatMsg =  
   flutterMavLinkLib
-    .lookup<NativeFunction<Uint16 Function(Pointer<Uint8> buf)>>("encode_heartbeat_msg")
-    .asFunction();
-
-final Pointer<Uint8> Function(Pointer<Uint16> length) encodeHeartBeatMsg2 =  
-  flutterMavLinkLib
-    .lookup<NativeFunction<Pointer<Uint8> Function(Pointer<Uint16> length)>>("encode_heartbeat_msg2")
-    .asFunction();
-
-final Pointer<MavlinkHeartbeat> Function(Pointer<Uint8> buf) decodeMavlinkMsg =  
-  flutterMavLinkLib
-    .lookup<NativeFunction<Pointer<MavlinkHeartbeat>  Function(Pointer<Uint8> buf)>>("decode_mavlink_msg")
+    .lookup<NativeFunction<Pointer<Uint8> Function(Pointer<Uint16> length)>>("encode_heartbeat_msg")
     .asFunction();
 
 final Pointer<MavlinkHeartbeat> Function() decodeHeartbeatMsg =  
@@ -43,56 +33,32 @@ final Pointer<MavlinkHeartbeat> Function() decodeHeartbeatMsg =
     .lookup<NativeFunction<Pointer<MavlinkHeartbeat>  Function()>>("decode_heartbeat_msg")
     .asFunction();
 
-
-final int Function(Pointer<Uint8> buf) decodeMavlinkMsg2 =  
+final int Function(Pointer<Uint8> buf) decodeMavlinkMsg =  
   flutterMavLinkLib
-    .lookup<NativeFunction<Uint16 Function(Pointer<Uint8> buf)>>("decode_mavlink_msg2")
+    .lookup<NativeFunction<Uint16 Function(Pointer<Uint8> buf)>>("decode_mavlink_msg")
     .asFunction();
 
-int packMavLinkMsgToBuffer(List<int> buf,int type){
-    Pointer<Uint8> soureData = allocate<Uint8>(count:buf.length);
-    final pointerList = soureData.asTypedList(buf.length);
-    pointerList.setAll(0, buf);
-    int len;
-    switch (type) {
-      case 0:
-        len = encodeHeartBeatMsg(soureData);
-        break;
-      default:
-    }
-    return len;
-}
-
-List<int> packMavLinkMsgToBuffer2(int type){
+List<int> packMavLinkMsgToBuffer(int type){
     Pointer<Uint16> lenPointer = allocate();
     Pointer<Uint8> buffer;
     switch (type) {
       case 0:
-        buffer = encodeHeartBeatMsg2(lenPointer);;
+        buffer = encodeHeartBeatMsg(lenPointer);
         break;
       default:
     }
     final pointerList = buffer.asTypedList(lenPointer.value);
-    print(pointerList);
+    print('packMavLinkMsgToBuffer result: $pointerList');
     free(lenPointer);
+    resetMsgBuffer();
     return pointerList;
 }
 
-dynamic getMavLinkMsgFromBuffer(List<int> buf){
+int getMavLinkMsgFromBuffer(List<int> buf){
     Pointer<Uint8> soureData = allocate<Uint8>(count:buf.length);
     final pointerList = soureData.asTypedList(buf.length);
     pointerList.setAll(0, buf);
-    Pointer<MavlinkHeartbeat> msgPointer = decodeMavlinkMsg(soureData);
-    final msg = msgPointer.ref;
-    free(soureData);
-    return msg;
-}
-
-int getMavLinkMsgFromBuffer2(List<int> buf){
-    Pointer<Uint8> soureData = allocate<Uint8>(count:buf.length);
-    final pointerList = soureData.asTypedList(buf.length);
-    pointerList.setAll(0, buf);
-    return decodeMavlinkMsg2(soureData);
+    return decodeMavlinkMsg(soureData);
 }
 
 class FlutterMavlink {
