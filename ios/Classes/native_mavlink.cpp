@@ -8,7 +8,7 @@ mavlink_message_t msg;
 mavlink_status_t status;
 
 mavlink_system_t mavlink_system = {
-   253, // System ID (1-255)253
+   255, // System ID (1-255)253
    MAV_COMP_ID_MISSIONPLANNER  // Component ID (a MAV_COMPONENT value)MAV_COMP_ID_MISSIONPLANNER
 };
 // typedef struct {
@@ -25,10 +25,11 @@ extern "C" {
 
   int32_t native_add(int16_t x, int16_t y) { return  x + y; }
 
+  //---------------------心跳包------------------------
   uint8_t* encode_heartbeat_msg(int16_t *length){
     mavlink_message_t temp_msg;
     /*Send Heartbeat */
-    mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &temp_msg, MAV_TYPE_HELICOPTER, MAV_AUTOPILOT_GENERIC, MAV_MODE_GUIDED_ARMED, 0, MAV_STATE_ACTIVE);
+    mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &temp_msg, MAV_TYPE_GCS, MAV_AUTOPILOT_INVALID, MAV_MODE_GUIDED_ARMED, 0, MAV_STATE_ACTIVE);
     *length = mavlink_msg_to_send_buffer(buffer, &temp_msg);
     return buffer;
   }
@@ -38,6 +39,14 @@ extern "C" {
     mavlink_heartbeat_t *heartbeat = (mavlink_heartbeat_t *)malloc(sizeof(mavlink_heartbeat_t));
     mavlink_msg_heartbeat_decode(&msg, heartbeat);
     return heartbeat;
+  }
+
+  //---------------------手动控制------------------------
+  uint8_t* encode_manual_control_msg(int16_t *length,int16_t x, int16_t y,int16_t z, int16_t r,int16_t buttons){
+    mavlink_message_t temp_msg;
+    mavlink_msg_manual_control_pack(mavlink_system.sysid, mavlink_system.compid,&temp_msg,1,x,y,z,r,buttons);
+    *length = mavlink_msg_to_send_buffer(buffer, &temp_msg);
+    return buffer;
   }
 
   uint16_t decode_mavlink_msg(uint8_t *buf,uint16_t len
