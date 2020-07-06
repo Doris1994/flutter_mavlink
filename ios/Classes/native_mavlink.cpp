@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <stdlib.h>
-#include "mavlink/custom_msg/mavlink.h"
+#include "mavlink/common/mavlink.h"
 
 #define BUFFER_LENGTH 2041 // minimum buffer size that can be used with qnx (I don't know why)
 uint8_t buffer[BUFFER_LENGTH];
