@@ -50,12 +50,19 @@ final NativeEncodeManualControlMsgFunc encodeManualControlMsg =
             "encode_manual_control_msg")
         .asFunction();
 
+final Pointer<MavlinkManualControl> Function() decodeManualControlMsg =
+    flutterMavLinkLib
+        .lookup<NativeFunction<Pointer<MavlinkManualControl> Function()>>(
+            "decode_manual_control_msg")
+        .asFunction();
+
 final int Function(Pointer<Uint8> buf) decodeMavlinkMsg = flutterMavLinkLib
-    .lookup<NativeFunction<Uint16 Function(Pointer<Uint8> buf)>>(
+    .lookup<NativeFunction<Int64 Function(Pointer<Uint8> buf)>>(
         "decode_mavlink_msg")
     .asFunction();
 
 List<int> packMavLinkMsgToBuffer(int type, Struct msg) {
+  resetMsgBuffer();
   Pointer<Uint16> lenPointer = allocate();
   Pointer<Uint8> buffer;
   switch (type) {
@@ -65,6 +72,11 @@ List<int> packMavLinkMsgToBuffer(int type, Struct msg) {
     case MAVLINK_MSG_ID_MANUAL_CONTROL:
       {
         MavlinkManualControl manualControl = msg;
+        if (msg == null) {
+          return null;
+        }
+        /*print(
+            '======= MAVLINK_MSG_ID_MANUAL_CONTROL=======  x:${manualControl.x} y:${manualControl.y} z:${manualControl.z} r:${manualControl.r} buttons:${manualControl.buttons}');*/
         buffer = encodeManualControlMsg(
             lenPointer,
             manualControl.x,
@@ -80,16 +92,15 @@ List<int> packMavLinkMsgToBuffer(int type, Struct msg) {
   final pointerList = buffer.asTypedList(lenPointer.value);
   print('packMavLinkMsgToBuffer result: $pointerList');
   free(lenPointer);
-  resetMsgBuffer();
   return pointerList;
 }
 
 int getMavLinkMsgFromBuffer(List<int> buf) {
-  Pointer<Uint8> soureData = allocate<Uint8>(count: buf.length);
-  final pointerList = soureData.asTypedList(buf.length);
+  Pointer<Uint8> mavlinkSoureData = allocate<Uint8>(count: buf.length);
+  final pointerList = mavlinkSoureData.asTypedList(buf.length);
   pointerList.setAll(0, buf);
-  int msgId = decodeMavlinkMsg(soureData);
-  free(soureData);
+  int msgId = decodeMavlinkMsg(mavlinkSoureData);
+  free(mavlinkSoureData);
   return msgId;
 }
 

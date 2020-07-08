@@ -1,5 +1,6 @@
 import 'dart:ffi'; // For FFI
-//import 'package:ffi/ffi.dart';
+
+import 'package:ffi/ffi.dart';
 
 const MAVLINK_MSG_ID_HEARTBEAT = 0;
 
@@ -74,12 +75,21 @@ class MavlinkManualControl extends Struct {
 
   @Uint16()
   int buttons;
-  // factory MavlinkHeartbeat.allocate(@Uint32() custom_mode, @Uint8() type,@Uint8() autopilot, @Uint8() base_mode,@Uint8() system_status, @Uint8() mavlink_version) =>
-  //     allocate<MavlinkHeartbeat>().ref
-  //       ..custom_mode = custom_mode
-  //       ..type = type
-  //       ..autopilot  = autopilot
-  //       ..base_mode = base_mode
-  //       ..system_status = system_status
-  //       ..mavlink_version = mavlink_version;
+
+  @Uint8()
+  int target;
+
+  factory MavlinkManualControl.allocate(
+    @Int16() x,
+    @Int16() y,
+    @Int16() z,
+    @Int16() r,
+    @Uint16() buttons,
+  ) =>
+      allocate<MavlinkManualControl>().ref
+        ..x = x
+        ..y = y
+        ..z = z
+        ..r = r
+        ..buttons = buttons;
 }
