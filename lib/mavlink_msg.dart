@@ -1,33 +1,36 @@
-import 'dart:ffi'; // For FFI
+import 'dart:ffi';
 
-import 'package:ffi/ffi.dart';
+import 'package:ffi/ffi.dart'; // For FFI
+//import 'package:ffi/ffi.dart';
 
 const MAVLINK_MSG_ID_HEARTBEAT = 0;
 
 const MAVLINK_MSG_ID_MANUAL_CONTROL = 69;
 
+const MAVLINK_MSG_ID_SAMPLEDATA = 229;
+
 class MavlinkManualControlButtons {
-  static const int unLock = 3;
-  static const int lock = 4;
+  static const int unLock = 32;
+  static const int lock = 16;
 
-  static const int manualMode = 5; //手动模式
-  static const int selfStableMode = 6; //自稳模式
-  static const int keepDepthMode = 7; //定深模式
+  static const int manualMode = 1; //手动模式
+  static const int selfStableMode = 8; //自稳模式
+  static const int keepDepthMode = 4; //定深模式
 
-  static const int effluentMode = 13; //出水模式
+  static const int effluentMode = 64; //出水模式
 
-  static const int increaseLeftBrightness = 32;
-  static const int decreaseLeftBrightness = 33;
-  static const int increaseRightBrightness = 35;
-  static const int decreaseRightBrightness = 36;
+  static const int increaseLeftBrightness = 128;
+  static const int decreaseLeftBrightness = 256;
+  static const int increaseRightBrightness = 512;
+  static const int decreaseRightBrightness = 1024;
 
-  static const int increaseRoll = 44;
+  /*static const int increaseRoll = 44;
   static const int decreaseRoll = 45;
   static const int increasePitch = 46;
   static const int decreasePitch = 47;
 
-  static const int keepInput = 48; //输入保持
-  static const int controlModeSwitch = 49; //切换姿态控制模式或运动控制模式
+  static const int keepInput = 48; //输入保持*/
+  static const int controlModeSwitch = 2048; //切换姿态控制模式或运动控制模式
 }
 
 // Example of handling a simple C struct mavlink_heartbeat_t
@@ -92,4 +95,36 @@ class MavlinkManualControl extends Struct {
         ..z = z
         ..r = r
         ..buttons = buttons;
+}
+
+class MavlinkSampleData extends Struct {
+  @Int16()
+  int curr;
+
+  @Int16()
+  int volt;
+
+  @Int16()
+  int temp;
+
+  @Int16()
+  int alit;
+
+  @Int16()
+  int pitch;
+
+  @Int16()
+  int roll;
+
+  @Int16()
+  int yaw;
+
+  @Int16()
+  int reserved1;
+
+  @Int16()
+  int reserved2;
+
+  @Int16()
+  int reserved3;
 }

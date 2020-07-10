@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:flutter/services.dart';
 
 import 'dart:ffi'; // For FFI
@@ -54,6 +55,12 @@ final Pointer<MavlinkManualControl> Function() decodeManualControlMsg =
     flutterMavLinkLib
         .lookup<NativeFunction<Pointer<MavlinkManualControl> Function()>>(
             "decode_manual_control_msg")
+        .asFunction();
+
+final Pointer<MavlinkSampleData> Function() decodeSampleDataMsg =
+    flutterMavLinkLib
+        .lookup<NativeFunction<Pointer<MavlinkSampleData> Function()>>(
+            "decode_sampledata_msg")
         .asFunction();
 
 final int Function(Pointer<Uint8> buf) decodeMavlinkMsg = flutterMavLinkLib

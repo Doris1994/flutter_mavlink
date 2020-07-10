@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <stdlib.h>
-#include "mavlink/common/mavlink.h"
+#include "mavlink/myxml/mavlink.h"
 
 #define BUFFER_LENGTH 2041 // minimum buffer size that can be used with qnx (I don't know why)
 uint8_t buffer[BUFFER_LENGTH];
@@ -53,6 +53,13 @@ extern "C" {
     mavlink_manual_control_t *manual_control = (mavlink_manual_control_t *)malloc(sizeof(mavlink_manual_control_t));
     mavlink_msg_manual_control_decode(msg, manual_control);
     return manual_control;
+  }
+
+  mavlink_sampledata_t* decode_sampledata_msg(){
+    // Get all fields in payload (into manual_control)
+    mavlink_sampledata_t *sample_data = (mavlink_sampledata_t *)malloc(sizeof(mavlink_sampledata_t));
+    mavlink_msg_sampledata_decode(msg,sample_data);
+    return sample_data;
   }
 
   int64_t decode_mavlink_msg(uint8_t *buf,uint16_t len
