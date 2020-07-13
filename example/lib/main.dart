@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_mavlink/flutter_mavlink.dart';
+import 'package:flutter_mavlink_example/worker_isolate.dart';
 import 'socket.dart';
 void main() => runApp(MyApp());
 
@@ -24,11 +24,11 @@ class _MyAppState extends State<MyApp> {
   Future<void> initPlatformState() async {
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await FlutterMavlink.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
+    // try {
+    //   platformVersion = await FlutterMavlink.platformVersion;
+    // } on PlatformException {
+    //   platformVersion = 'Failed to get platform version.';
+    // }
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
@@ -52,10 +52,10 @@ class _MyAppState extends State<MyApp> {
           //child: Text('1+2 == ${nativeAdd(1,2)} ${nativeAdd(1,2)} ${nativeAdd(1,2)} ${nativeAdd(1,2)}'),
           child: Column(
             children: <Widget>[
-              Text('1+2 == ${nativeAdd(1,2)} ${nativeAdd(1,2)} ${nativeAdd(1,2)} ${nativeAdd(1,2)}'),
               RaisedButton(
                 onPressed:(){
-                  UdpSocketManager().sendData(3);
+                  WorkerIsolate().willSendUdpData(0, 0);
+                  //UdpSocketManager().sendData(3);
                 },
                 child:  const Text("发送心跳包"),
               )

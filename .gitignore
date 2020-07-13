@@ -7,3 +7,4 @@
 build/
 android/.cxx
 android/.externalNativeBuild
+example/plugins
