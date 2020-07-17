@@ -29,6 +29,7 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        main.jniLibs.srcDirs = ['libs']
     }
     defaultConfig {
         minSdkVersion 16
@@ -36,14 +37,6 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
-    }
-    android{
-        // ...
-        externalNativeBuild {
-            cmake {
-                path "CMakeLists.txt"
-            }
-        }
     }
 }
 
