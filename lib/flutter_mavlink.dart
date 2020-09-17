@@ -68,6 +68,11 @@ final int Function(Pointer<Uint8> buf) decodeMavlinkMsg = flutterMavLinkLib
         "decode_mavlink_msg")
     .asFunction();
 
+final int Function(int temp, int newMsg) parseMavlinkMsgChar = flutterMavLinkLib
+    .lookup<NativeFunction<Int64 Function(Uint8 temp, Uint8 newMsg)>>(
+        "parse_mavlink_char")
+    .asFunction();
+
 List<int> packMavLinkMsgToBuffer(int type, Struct msg) {
   resetMsgBuffer();
   Pointer<Uint16> lenPointer = allocate();
@@ -97,7 +102,7 @@ List<int> packMavLinkMsgToBuffer(int type, Struct msg) {
       return null;
   }
   final pointerList = buffer.asTypedList(lenPointer.value);
-  print('packMavLinkMsgToBuffer result: $pointerList');
+  //print('packMavLinkMsgToBuffer result: $pointerList');
   free(lenPointer);
   return pointerList;
 }

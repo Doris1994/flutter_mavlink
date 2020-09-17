@@ -37,7 +37,7 @@ static void mavlink_test_sampledata(uint8_t system_id, uint8_t component_id, mav
         uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
         uint16_t i;
     mavlink_sampledata_t packet_in = {
-        17235,17339,17443,17547,17651,17755,17859,17963,18067,18171
+        17235,17339,17443,17547,17651,17755,17859,17963,18067,18171,18275,18379,18483,18587,18691,18795,18899,19003,19107
     };
     mavlink_sampledata_t packet1, packet2;
         memset(&packet1, 0, sizeof(packet1));
@@ -48,9 +48,18 @@ static void mavlink_test_sampledata(uint8_t system_id, uint8_t component_id, mav
         packet1.pitch = packet_in.pitch;
         packet1.roll = packet_in.roll;
         packet1.yaw = packet_in.yaw;
-        packet1.reserved1 = packet_in.reserved1;
-        packet1.reserved2 = packet_in.reserved2;
-        packet1.reserved3 = packet_in.reserved3;
+        packet1.remain = packet_in.remain;
+        packet1.speed = packet_in.speed;
+        packet1.compass = packet_in.compass;
+        packet1.status = packet_in.status;
+        packet1.reversed1 = packet_in.reversed1;
+        packet1.reversed2 = packet_in.reversed2;
+        packet1.reversed3 = packet_in.reversed3;
+        packet1.reversed4 = packet_in.reversed4;
+        packet1.reversed5 = packet_in.reversed5;
+        packet1.reversed6 = packet_in.reversed6;
+        packet1.reversed7 = packet_in.reversed7;
+        packet1.reversed8 = packet_in.reversed8;
         
         
 #ifdef MAVLINK_STATUS_FLAG_OUT_MAVLINK1
@@ -65,12 +74,12 @@ static void mavlink_test_sampledata(uint8_t system_id, uint8_t component_id, mav
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_sampledata_pack(system_id, component_id, &msg , packet1.curr , packet1.volt , packet1.temp , packet1.alit , packet1.pitch , packet1.roll , packet1.yaw , packet1.reserved1 , packet1.reserved2 , packet1.reserved3 );
+    mavlink_msg_sampledata_pack(system_id, component_id, &msg , packet1.curr , packet1.volt , packet1.temp , packet1.alit , packet1.pitch , packet1.roll , packet1.yaw , packet1.remain , packet1.speed , packet1.compass , packet1.status , packet1.reversed1 , packet1.reversed2 , packet1.reversed3 , packet1.reversed4 , packet1.reversed5 , packet1.reversed6 , packet1.reversed7 , packet1.reversed8 );
     mavlink_msg_sampledata_decode(&msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_sampledata_pack_chan(system_id, component_id, MAVLINK_COMM_0, &msg , packet1.curr , packet1.volt , packet1.temp , packet1.alit , packet1.pitch , packet1.roll , packet1.yaw , packet1.reserved1 , packet1.reserved2 , packet1.reserved3 );
+    mavlink_msg_sampledata_pack_chan(system_id, component_id, MAVLINK_COMM_0, &msg , packet1.curr , packet1.volt , packet1.temp , packet1.alit , packet1.pitch , packet1.roll , packet1.yaw , packet1.remain , packet1.speed , packet1.compass , packet1.status , packet1.reversed1 , packet1.reversed2 , packet1.reversed3 , packet1.reversed4 , packet1.reversed5 , packet1.reversed6 , packet1.reversed7 , packet1.reversed8 );
     mavlink_msg_sampledata_decode(&msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
@@ -83,7 +92,7 @@ static void mavlink_test_sampledata(uint8_t system_id, uint8_t component_id, mav
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
         
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_sampledata_send(MAVLINK_COMM_1 , packet1.curr , packet1.volt , packet1.temp , packet1.alit , packet1.pitch , packet1.roll , packet1.yaw , packet1.reserved1 , packet1.reserved2 , packet1.reserved3 );
+    mavlink_msg_sampledata_send(MAVLINK_COMM_1 , packet1.curr , packet1.volt , packet1.temp , packet1.alit , packet1.pitch , packet1.roll , packet1.yaw , packet1.remain , packet1.speed , packet1.compass , packet1.status , packet1.reversed1 , packet1.reversed2 , packet1.reversed3 , packet1.reversed4 , packet1.reversed5 , packet1.reversed6 , packet1.reversed7 , packet1.reversed8 );
     mavlink_msg_sampledata_decode(last_msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 }

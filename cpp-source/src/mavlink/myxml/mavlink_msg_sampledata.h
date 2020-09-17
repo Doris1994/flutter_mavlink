@@ -12,18 +12,27 @@ typedef struct __mavlink_sampledata_t {
  int16_t pitch; /*<  Sample pitch*/
  int16_t roll; /*<  Sample roll*/
  int16_t yaw; /*<  Sample yaw*/
- int16_t reserved1; /*<  Reserved 1*/
- int16_t reserved2; /*<  Reserved 2*/
- int16_t reserved3; /*<  Reserved 3*/
+ int16_t remain; /*<  Sample remain*/
+ int16_t speed; /*<  Sample speed*/
+ int16_t compass; /*<  Sample compass*/
+ int16_t status; /*<  Sample status*/
+ int16_t reversed1; /*<  Sample reversed1*/
+ int16_t reversed2; /*<  Sample reversed2*/
+ int16_t reversed3; /*<  Sample reversed3*/
+ int16_t reversed4; /*<  Sample reversed4*/
+ int16_t reversed5; /*<  Sample reversed5*/
+ int16_t reversed6; /*<  Sample reversed6*/
+ int16_t reversed7; /*<  Sample reversed7*/
+ int16_t reversed8; /*<  Sample reversed8*/
 }) mavlink_sampledata_t;
 
-#define MAVLINK_MSG_ID_SAMPLEDATA_LEN 20
-#define MAVLINK_MSG_ID_SAMPLEDATA_MIN_LEN 20
-#define MAVLINK_MSG_ID_229_LEN 20
-#define MAVLINK_MSG_ID_229_MIN_LEN 20
+#define MAVLINK_MSG_ID_SAMPLEDATA_LEN 38
+#define MAVLINK_MSG_ID_SAMPLEDATA_MIN_LEN 38
+#define MAVLINK_MSG_ID_229_LEN 38
+#define MAVLINK_MSG_ID_229_MIN_LEN 38
 
-#define MAVLINK_MSG_ID_SAMPLEDATA_CRC 101
-#define MAVLINK_MSG_ID_229_CRC 101
+#define MAVLINK_MSG_ID_SAMPLEDATA_CRC 59
+#define MAVLINK_MSG_ID_229_CRC 59
 
 
 
@@ -31,7 +40,7 @@ typedef struct __mavlink_sampledata_t {
 #define MAVLINK_MESSAGE_INFO_SAMPLEDATA { \
     229, \
     "SAMPLEDATA", \
-    10, \
+    19, \
     {  { "curr", NULL, MAVLINK_TYPE_INT16_T, 0, 0, offsetof(mavlink_sampledata_t, curr) }, \
          { "volt", NULL, MAVLINK_TYPE_INT16_T, 0, 2, offsetof(mavlink_sampledata_t, volt) }, \
          { "temp", NULL, MAVLINK_TYPE_INT16_T, 0, 4, offsetof(mavlink_sampledata_t, temp) }, \
@@ -39,15 +48,24 @@ typedef struct __mavlink_sampledata_t {
          { "pitch", NULL, MAVLINK_TYPE_INT16_T, 0, 8, offsetof(mavlink_sampledata_t, pitch) }, \
          { "roll", NULL, MAVLINK_TYPE_INT16_T, 0, 10, offsetof(mavlink_sampledata_t, roll) }, \
          { "yaw", NULL, MAVLINK_TYPE_INT16_T, 0, 12, offsetof(mavlink_sampledata_t, yaw) }, \
-         { "reserved1", NULL, MAVLINK_TYPE_INT16_T, 0, 14, offsetof(mavlink_sampledata_t, reserved1) }, \
-         { "reserved2", NULL, MAVLINK_TYPE_INT16_T, 0, 16, offsetof(mavlink_sampledata_t, reserved2) }, \
-         { "reserved3", NULL, MAVLINK_TYPE_INT16_T, 0, 18, offsetof(mavlink_sampledata_t, reserved3) }, \
+         { "remain", NULL, MAVLINK_TYPE_INT16_T, 0, 14, offsetof(mavlink_sampledata_t, remain) }, \
+         { "speed", NULL, MAVLINK_TYPE_INT16_T, 0, 16, offsetof(mavlink_sampledata_t, speed) }, \
+         { "compass", NULL, MAVLINK_TYPE_INT16_T, 0, 18, offsetof(mavlink_sampledata_t, compass) }, \
+         { "status", NULL, MAVLINK_TYPE_INT16_T, 0, 20, offsetof(mavlink_sampledata_t, status) }, \
+         { "reversed1", NULL, MAVLINK_TYPE_INT16_T, 0, 22, offsetof(mavlink_sampledata_t, reversed1) }, \
+         { "reversed2", NULL, MAVLINK_TYPE_INT16_T, 0, 24, offsetof(mavlink_sampledata_t, reversed2) }, \
+         { "reversed3", NULL, MAVLINK_TYPE_INT16_T, 0, 26, offsetof(mavlink_sampledata_t, reversed3) }, \
+         { "reversed4", NULL, MAVLINK_TYPE_INT16_T, 0, 28, offsetof(mavlink_sampledata_t, reversed4) }, \
+         { "reversed5", NULL, MAVLINK_TYPE_INT16_T, 0, 30, offsetof(mavlink_sampledata_t, reversed5) }, \
+         { "reversed6", NULL, MAVLINK_TYPE_INT16_T, 0, 32, offsetof(mavlink_sampledata_t, reversed6) }, \
+         { "reversed7", NULL, MAVLINK_TYPE_INT16_T, 0, 34, offsetof(mavlink_sampledata_t, reversed7) }, \
+         { "reversed8", NULL, MAVLINK_TYPE_INT16_T, 0, 36, offsetof(mavlink_sampledata_t, reversed8) }, \
          } \
 }
 #else
 #define MAVLINK_MESSAGE_INFO_SAMPLEDATA { \
     "SAMPLEDATA", \
-    10, \
+    19, \
     {  { "curr", NULL, MAVLINK_TYPE_INT16_T, 0, 0, offsetof(mavlink_sampledata_t, curr) }, \
          { "volt", NULL, MAVLINK_TYPE_INT16_T, 0, 2, offsetof(mavlink_sampledata_t, volt) }, \
          { "temp", NULL, MAVLINK_TYPE_INT16_T, 0, 4, offsetof(mavlink_sampledata_t, temp) }, \
@@ -55,9 +73,18 @@ typedef struct __mavlink_sampledata_t {
          { "pitch", NULL, MAVLINK_TYPE_INT16_T, 0, 8, offsetof(mavlink_sampledata_t, pitch) }, \
          { "roll", NULL, MAVLINK_TYPE_INT16_T, 0, 10, offsetof(mavlink_sampledata_t, roll) }, \
          { "yaw", NULL, MAVLINK_TYPE_INT16_T, 0, 12, offsetof(mavlink_sampledata_t, yaw) }, \
-         { "reserved1", NULL, MAVLINK_TYPE_INT16_T, 0, 14, offsetof(mavlink_sampledata_t, reserved1) }, \
-         { "reserved2", NULL, MAVLINK_TYPE_INT16_T, 0, 16, offsetof(mavlink_sampledata_t, reserved2) }, \
-         { "reserved3", NULL, MAVLINK_TYPE_INT16_T, 0, 18, offsetof(mavlink_sampledata_t, reserved3) }, \
+         { "remain", NULL, MAVLINK_TYPE_INT16_T, 0, 14, offsetof(mavlink_sampledata_t, remain) }, \
+         { "speed", NULL, MAVLINK_TYPE_INT16_T, 0, 16, offsetof(mavlink_sampledata_t, speed) }, \
+         { "compass", NULL, MAVLINK_TYPE_INT16_T, 0, 18, offsetof(mavlink_sampledata_t, compass) }, \
+         { "status", NULL, MAVLINK_TYPE_INT16_T, 0, 20, offsetof(mavlink_sampledata_t, status) }, \
+         { "reversed1", NULL, MAVLINK_TYPE_INT16_T, 0, 22, offsetof(mavlink_sampledata_t, reversed1) }, \
+         { "reversed2", NULL, MAVLINK_TYPE_INT16_T, 0, 24, offsetof(mavlink_sampledata_t, reversed2) }, \
+         { "reversed3", NULL, MAVLINK_TYPE_INT16_T, 0, 26, offsetof(mavlink_sampledata_t, reversed3) }, \
+         { "reversed4", NULL, MAVLINK_TYPE_INT16_T, 0, 28, offsetof(mavlink_sampledata_t, reversed4) }, \
+         { "reversed5", NULL, MAVLINK_TYPE_INT16_T, 0, 30, offsetof(mavlink_sampledata_t, reversed5) }, \
+         { "reversed6", NULL, MAVLINK_TYPE_INT16_T, 0, 32, offsetof(mavlink_sampledata_t, reversed6) }, \
+         { "reversed7", NULL, MAVLINK_TYPE_INT16_T, 0, 34, offsetof(mavlink_sampledata_t, reversed7) }, \
+         { "reversed8", NULL, MAVLINK_TYPE_INT16_T, 0, 36, offsetof(mavlink_sampledata_t, reversed8) }, \
          } \
 }
 #endif
@@ -75,13 +102,22 @@ typedef struct __mavlink_sampledata_t {
  * @param pitch  Sample pitch
  * @param roll  Sample roll
  * @param yaw  Sample yaw
- * @param reserved1  Reserved 1
- * @param reserved2  Reserved 2
- * @param reserved3  Reserved 3
+ * @param remain  Sample remain
+ * @param speed  Sample speed
+ * @param compass  Sample compass
+ * @param status  Sample status
+ * @param reversed1  Sample reversed1
+ * @param reversed2  Sample reversed2
+ * @param reversed3  Sample reversed3
+ * @param reversed4  Sample reversed4
+ * @param reversed5  Sample reversed5
+ * @param reversed6  Sample reversed6
+ * @param reversed7  Sample reversed7
+ * @param reversed8  Sample reversed8
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_sampledata_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
-                               int16_t curr, int16_t volt, int16_t temp, int16_t alit, int16_t pitch, int16_t roll, int16_t yaw, int16_t reserved1, int16_t reserved2, int16_t reserved3)
+                               int16_t curr, int16_t volt, int16_t temp, int16_t alit, int16_t pitch, int16_t roll, int16_t yaw, int16_t remain, int16_t speed, int16_t compass, int16_t status, int16_t reversed1, int16_t reversed2, int16_t reversed3, int16_t reversed4, int16_t reversed5, int16_t reversed6, int16_t reversed7, int16_t reversed8)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SAMPLEDATA_LEN];
@@ -92,9 +128,18 @@ static inline uint16_t mavlink_msg_sampledata_pack(uint8_t system_id, uint8_t co
     _mav_put_int16_t(buf, 8, pitch);
     _mav_put_int16_t(buf, 10, roll);
     _mav_put_int16_t(buf, 12, yaw);
-    _mav_put_int16_t(buf, 14, reserved1);
-    _mav_put_int16_t(buf, 16, reserved2);
-    _mav_put_int16_t(buf, 18, reserved3);
+    _mav_put_int16_t(buf, 14, remain);
+    _mav_put_int16_t(buf, 16, speed);
+    _mav_put_int16_t(buf, 18, compass);
+    _mav_put_int16_t(buf, 20, status);
+    _mav_put_int16_t(buf, 22, reversed1);
+    _mav_put_int16_t(buf, 24, reversed2);
+    _mav_put_int16_t(buf, 26, reversed3);
+    _mav_put_int16_t(buf, 28, reversed4);
+    _mav_put_int16_t(buf, 30, reversed5);
+    _mav_put_int16_t(buf, 32, reversed6);
+    _mav_put_int16_t(buf, 34, reversed7);
+    _mav_put_int16_t(buf, 36, reversed8);
 
         memcpy(_MAV_PAYLOAD_NON_CONST(msg), buf, MAVLINK_MSG_ID_SAMPLEDATA_LEN);
 #else
@@ -106,9 +151,18 @@ static inline uint16_t mavlink_msg_sampledata_pack(uint8_t system_id, uint8_t co
     packet.pitch = pitch;
     packet.roll = roll;
     packet.yaw = yaw;
-    packet.reserved1 = reserved1;
-    packet.reserved2 = reserved2;
-    packet.reserved3 = reserved3;
+    packet.remain = remain;
+    packet.speed = speed;
+    packet.compass = compass;
+    packet.status = status;
+    packet.reversed1 = reversed1;
+    packet.reversed2 = reversed2;
+    packet.reversed3 = reversed3;
+    packet.reversed4 = reversed4;
+    packet.reversed5 = reversed5;
+    packet.reversed6 = reversed6;
+    packet.reversed7 = reversed7;
+    packet.reversed8 = reversed8;
 
         memcpy(_MAV_PAYLOAD_NON_CONST(msg), &packet, MAVLINK_MSG_ID_SAMPLEDATA_LEN);
 #endif
@@ -130,14 +184,23 @@ static inline uint16_t mavlink_msg_sampledata_pack(uint8_t system_id, uint8_t co
  * @param pitch  Sample pitch
  * @param roll  Sample roll
  * @param yaw  Sample yaw
- * @param reserved1  Reserved 1
- * @param reserved2  Reserved 2
- * @param reserved3  Reserved 3
+ * @param remain  Sample remain
+ * @param speed  Sample speed
+ * @param compass  Sample compass
+ * @param status  Sample status
+ * @param reversed1  Sample reversed1
+ * @param reversed2  Sample reversed2
+ * @param reversed3  Sample reversed3
+ * @param reversed4  Sample reversed4
+ * @param reversed5  Sample reversed5
+ * @param reversed6  Sample reversed6
+ * @param reversed7  Sample reversed7
+ * @param reversed8  Sample reversed8
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_sampledata_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
                                mavlink_message_t* msg,
-                                   int16_t curr,int16_t volt,int16_t temp,int16_t alit,int16_t pitch,int16_t roll,int16_t yaw,int16_t reserved1,int16_t reserved2,int16_t reserved3)
+                                   int16_t curr,int16_t volt,int16_t temp,int16_t alit,int16_t pitch,int16_t roll,int16_t yaw,int16_t remain,int16_t speed,int16_t compass,int16_t status,int16_t reversed1,int16_t reversed2,int16_t reversed3,int16_t reversed4,int16_t reversed5,int16_t reversed6,int16_t reversed7,int16_t reversed8)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SAMPLEDATA_LEN];
@@ -148,9 +211,18 @@ static inline uint16_t mavlink_msg_sampledata_pack_chan(uint8_t system_id, uint8
     _mav_put_int16_t(buf, 8, pitch);
     _mav_put_int16_t(buf, 10, roll);
     _mav_put_int16_t(buf, 12, yaw);
-    _mav_put_int16_t(buf, 14, reserved1);
-    _mav_put_int16_t(buf, 16, reserved2);
-    _mav_put_int16_t(buf, 18, reserved3);
+    _mav_put_int16_t(buf, 14, remain);
+    _mav_put_int16_t(buf, 16, speed);
+    _mav_put_int16_t(buf, 18, compass);
+    _mav_put_int16_t(buf, 20, status);
+    _mav_put_int16_t(buf, 22, reversed1);
+    _mav_put_int16_t(buf, 24, reversed2);
+    _mav_put_int16_t(buf, 26, reversed3);
+    _mav_put_int16_t(buf, 28, reversed4);
+    _mav_put_int16_t(buf, 30, reversed5);
+    _mav_put_int16_t(buf, 32, reversed6);
+    _mav_put_int16_t(buf, 34, reversed7);
+    _mav_put_int16_t(buf, 36, reversed8);
 
         memcpy(_MAV_PAYLOAD_NON_CONST(msg), buf, MAVLINK_MSG_ID_SAMPLEDATA_LEN);
 #else
@@ -162,9 +234,18 @@ static inline uint16_t mavlink_msg_sampledata_pack_chan(uint8_t system_id, uint8
     packet.pitch = pitch;
     packet.roll = roll;
     packet.yaw = yaw;
-    packet.reserved1 = reserved1;
-    packet.reserved2 = reserved2;
-    packet.reserved3 = reserved3;
+    packet.remain = remain;
+    packet.speed = speed;
+    packet.compass = compass;
+    packet.status = status;
+    packet.reversed1 = reversed1;
+    packet.reversed2 = reversed2;
+    packet.reversed3 = reversed3;
+    packet.reversed4 = reversed4;
+    packet.reversed5 = reversed5;
+    packet.reversed6 = reversed6;
+    packet.reversed7 = reversed7;
+    packet.reversed8 = reversed8;
 
         memcpy(_MAV_PAYLOAD_NON_CONST(msg), &packet, MAVLINK_MSG_ID_SAMPLEDATA_LEN);
 #endif
@@ -183,7 +264,7 @@ static inline uint16_t mavlink_msg_sampledata_pack_chan(uint8_t system_id, uint8
  */
 static inline uint16_t mavlink_msg_sampledata_encode(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, const mavlink_sampledata_t* sampledata)
 {
-    return mavlink_msg_sampledata_pack(system_id, component_id, msg, sampledata->curr, sampledata->volt, sampledata->temp, sampledata->alit, sampledata->pitch, sampledata->roll, sampledata->yaw, sampledata->reserved1, sampledata->reserved2, sampledata->reserved3);
+    return mavlink_msg_sampledata_pack(system_id, component_id, msg, sampledata->curr, sampledata->volt, sampledata->temp, sampledata->alit, sampledata->pitch, sampledata->roll, sampledata->yaw, sampledata->remain, sampledata->speed, sampledata->compass, sampledata->status, sampledata->reversed1, sampledata->reversed2, sampledata->reversed3, sampledata->reversed4, sampledata->reversed5, sampledata->reversed6, sampledata->reversed7, sampledata->reversed8);
 }
 
 /**
@@ -197,7 +278,7 @@ static inline uint16_t mavlink_msg_sampledata_encode(uint8_t system_id, uint8_t 
  */
 static inline uint16_t mavlink_msg_sampledata_encode_chan(uint8_t system_id, uint8_t component_id, uint8_t chan, mavlink_message_t* msg, const mavlink_sampledata_t* sampledata)
 {
-    return mavlink_msg_sampledata_pack_chan(system_id, component_id, chan, msg, sampledata->curr, sampledata->volt, sampledata->temp, sampledata->alit, sampledata->pitch, sampledata->roll, sampledata->yaw, sampledata->reserved1, sampledata->reserved2, sampledata->reserved3);
+    return mavlink_msg_sampledata_pack_chan(system_id, component_id, chan, msg, sampledata->curr, sampledata->volt, sampledata->temp, sampledata->alit, sampledata->pitch, sampledata->roll, sampledata->yaw, sampledata->remain, sampledata->speed, sampledata->compass, sampledata->status, sampledata->reversed1, sampledata->reversed2, sampledata->reversed3, sampledata->reversed4, sampledata->reversed5, sampledata->reversed6, sampledata->reversed7, sampledata->reversed8);
 }
 
 /**
@@ -211,13 +292,22 @@ static inline uint16_t mavlink_msg_sampledata_encode_chan(uint8_t system_id, uin
  * @param pitch  Sample pitch
  * @param roll  Sample roll
  * @param yaw  Sample yaw
- * @param reserved1  Reserved 1
- * @param reserved2  Reserved 2
- * @param reserved3  Reserved 3
+ * @param remain  Sample remain
+ * @param speed  Sample speed
+ * @param compass  Sample compass
+ * @param status  Sample status
+ * @param reversed1  Sample reversed1
+ * @param reversed2  Sample reversed2
+ * @param reversed3  Sample reversed3
+ * @param reversed4  Sample reversed4
+ * @param reversed5  Sample reversed5
+ * @param reversed6  Sample reversed6
+ * @param reversed7  Sample reversed7
+ * @param reversed8  Sample reversed8
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
-static inline void mavlink_msg_sampledata_send(mavlink_channel_t chan, int16_t curr, int16_t volt, int16_t temp, int16_t alit, int16_t pitch, int16_t roll, int16_t yaw, int16_t reserved1, int16_t reserved2, int16_t reserved3)
+static inline void mavlink_msg_sampledata_send(mavlink_channel_t chan, int16_t curr, int16_t volt, int16_t temp, int16_t alit, int16_t pitch, int16_t roll, int16_t yaw, int16_t remain, int16_t speed, int16_t compass, int16_t status, int16_t reversed1, int16_t reversed2, int16_t reversed3, int16_t reversed4, int16_t reversed5, int16_t reversed6, int16_t reversed7, int16_t reversed8)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char buf[MAVLINK_MSG_ID_SAMPLEDATA_LEN];
@@ -228,9 +318,18 @@ static inline void mavlink_msg_sampledata_send(mavlink_channel_t chan, int16_t c
     _mav_put_int16_t(buf, 8, pitch);
     _mav_put_int16_t(buf, 10, roll);
     _mav_put_int16_t(buf, 12, yaw);
-    _mav_put_int16_t(buf, 14, reserved1);
-    _mav_put_int16_t(buf, 16, reserved2);
-    _mav_put_int16_t(buf, 18, reserved3);
+    _mav_put_int16_t(buf, 14, remain);
+    _mav_put_int16_t(buf, 16, speed);
+    _mav_put_int16_t(buf, 18, compass);
+    _mav_put_int16_t(buf, 20, status);
+    _mav_put_int16_t(buf, 22, reversed1);
+    _mav_put_int16_t(buf, 24, reversed2);
+    _mav_put_int16_t(buf, 26, reversed3);
+    _mav_put_int16_t(buf, 28, reversed4);
+    _mav_put_int16_t(buf, 30, reversed5);
+    _mav_put_int16_t(buf, 32, reversed6);
+    _mav_put_int16_t(buf, 34, reversed7);
+    _mav_put_int16_t(buf, 36, reversed8);
 
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SAMPLEDATA, buf, MAVLINK_MSG_ID_SAMPLEDATA_MIN_LEN, MAVLINK_MSG_ID_SAMPLEDATA_LEN, MAVLINK_MSG_ID_SAMPLEDATA_CRC);
 #else
@@ -242,9 +341,18 @@ static inline void mavlink_msg_sampledata_send(mavlink_channel_t chan, int16_t c
     packet.pitch = pitch;
     packet.roll = roll;
     packet.yaw = yaw;
-    packet.reserved1 = reserved1;
-    packet.reserved2 = reserved2;
-    packet.reserved3 = reserved3;
+    packet.remain = remain;
+    packet.speed = speed;
+    packet.compass = compass;
+    packet.status = status;
+    packet.reversed1 = reversed1;
+    packet.reversed2 = reversed2;
+    packet.reversed3 = reversed3;
+    packet.reversed4 = reversed4;
+    packet.reversed5 = reversed5;
+    packet.reversed6 = reversed6;
+    packet.reversed7 = reversed7;
+    packet.reversed8 = reversed8;
 
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SAMPLEDATA, (const char *)&packet, MAVLINK_MSG_ID_SAMPLEDATA_MIN_LEN, MAVLINK_MSG_ID_SAMPLEDATA_LEN, MAVLINK_MSG_ID_SAMPLEDATA_CRC);
 #endif
@@ -258,7 +366,7 @@ static inline void mavlink_msg_sampledata_send(mavlink_channel_t chan, int16_t c
 static inline void mavlink_msg_sampledata_send_struct(mavlink_channel_t chan, const mavlink_sampledata_t* sampledata)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
-    mavlink_msg_sampledata_send(chan, sampledata->curr, sampledata->volt, sampledata->temp, sampledata->alit, sampledata->pitch, sampledata->roll, sampledata->yaw, sampledata->reserved1, sampledata->reserved2, sampledata->reserved3);
+    mavlink_msg_sampledata_send(chan, sampledata->curr, sampledata->volt, sampledata->temp, sampledata->alit, sampledata->pitch, sampledata->roll, sampledata->yaw, sampledata->remain, sampledata->speed, sampledata->compass, sampledata->status, sampledata->reversed1, sampledata->reversed2, sampledata->reversed3, sampledata->reversed4, sampledata->reversed5, sampledata->reversed6, sampledata->reversed7, sampledata->reversed8);
 #else
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SAMPLEDATA, (const char *)sampledata, MAVLINK_MSG_ID_SAMPLEDATA_MIN_LEN, MAVLINK_MSG_ID_SAMPLEDATA_LEN, MAVLINK_MSG_ID_SAMPLEDATA_CRC);
 #endif
@@ -272,7 +380,7 @@ static inline void mavlink_msg_sampledata_send_struct(mavlink_channel_t chan, co
   is usually the receive buffer for the channel, and allows a reply to an
   incoming message with minimum stack space usage.
  */
-static inline void mavlink_msg_sampledata_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  int16_t curr, int16_t volt, int16_t temp, int16_t alit, int16_t pitch, int16_t roll, int16_t yaw, int16_t reserved1, int16_t reserved2, int16_t reserved3)
+static inline void mavlink_msg_sampledata_send_buf(mavlink_message_t *msgbuf, mavlink_channel_t chan,  int16_t curr, int16_t volt, int16_t temp, int16_t alit, int16_t pitch, int16_t roll, int16_t yaw, int16_t remain, int16_t speed, int16_t compass, int16_t status, int16_t reversed1, int16_t reversed2, int16_t reversed3, int16_t reversed4, int16_t reversed5, int16_t reversed6, int16_t reversed7, int16_t reversed8)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
     char *buf = (char *)msgbuf;
@@ -283,9 +391,18 @@ static inline void mavlink_msg_sampledata_send_buf(mavlink_message_t *msgbuf, ma
     _mav_put_int16_t(buf, 8, pitch);
     _mav_put_int16_t(buf, 10, roll);
     _mav_put_int16_t(buf, 12, yaw);
-    _mav_put_int16_t(buf, 14, reserved1);
-    _mav_put_int16_t(buf, 16, reserved2);
-    _mav_put_int16_t(buf, 18, reserved3);
+    _mav_put_int16_t(buf, 14, remain);
+    _mav_put_int16_t(buf, 16, speed);
+    _mav_put_int16_t(buf, 18, compass);
+    _mav_put_int16_t(buf, 20, status);
+    _mav_put_int16_t(buf, 22, reversed1);
+    _mav_put_int16_t(buf, 24, reversed2);
+    _mav_put_int16_t(buf, 26, reversed3);
+    _mav_put_int16_t(buf, 28, reversed4);
+    _mav_put_int16_t(buf, 30, reversed5);
+    _mav_put_int16_t(buf, 32, reversed6);
+    _mav_put_int16_t(buf, 34, reversed7);
+    _mav_put_int16_t(buf, 36, reversed8);
 
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SAMPLEDATA, buf, MAVLINK_MSG_ID_SAMPLEDATA_MIN_LEN, MAVLINK_MSG_ID_SAMPLEDATA_LEN, MAVLINK_MSG_ID_SAMPLEDATA_CRC);
 #else
@@ -297,9 +414,18 @@ static inline void mavlink_msg_sampledata_send_buf(mavlink_message_t *msgbuf, ma
     packet->pitch = pitch;
     packet->roll = roll;
     packet->yaw = yaw;
-    packet->reserved1 = reserved1;
-    packet->reserved2 = reserved2;
-    packet->reserved3 = reserved3;
+    packet->remain = remain;
+    packet->speed = speed;
+    packet->compass = compass;
+    packet->status = status;
+    packet->reversed1 = reversed1;
+    packet->reversed2 = reversed2;
+    packet->reversed3 = reversed3;
+    packet->reversed4 = reversed4;
+    packet->reversed5 = reversed5;
+    packet->reversed6 = reversed6;
+    packet->reversed7 = reversed7;
+    packet->reversed8 = reversed8;
 
     _mav_finalize_message_chan_send(chan, MAVLINK_MSG_ID_SAMPLEDATA, (const char *)packet, MAVLINK_MSG_ID_SAMPLEDATA_MIN_LEN, MAVLINK_MSG_ID_SAMPLEDATA_LEN, MAVLINK_MSG_ID_SAMPLEDATA_CRC);
 #endif
@@ -382,33 +508,123 @@ static inline int16_t mavlink_msg_sampledata_get_yaw(const mavlink_message_t* ms
 }
 
 /**
- * @brief Get field reserved1 from sampledata message
+ * @brief Get field remain from sampledata message
  *
- * @return  Reserved 1
+ * @return  Sample remain
  */
-static inline int16_t mavlink_msg_sampledata_get_reserved1(const mavlink_message_t* msg)
+static inline int16_t mavlink_msg_sampledata_get_remain(const mavlink_message_t* msg)
 {
     return _MAV_RETURN_int16_t(msg,  14);
 }
 
 /**
- * @brief Get field reserved2 from sampledata message
+ * @brief Get field speed from sampledata message
  *
- * @return  Reserved 2
+ * @return  Sample speed
  */
-static inline int16_t mavlink_msg_sampledata_get_reserved2(const mavlink_message_t* msg)
+static inline int16_t mavlink_msg_sampledata_get_speed(const mavlink_message_t* msg)
 {
     return _MAV_RETURN_int16_t(msg,  16);
 }
 
 /**
- * @brief Get field reserved3 from sampledata message
+ * @brief Get field compass from sampledata message
  *
- * @return  Reserved 3
+ * @return  Sample compass
  */
-static inline int16_t mavlink_msg_sampledata_get_reserved3(const mavlink_message_t* msg)
+static inline int16_t mavlink_msg_sampledata_get_compass(const mavlink_message_t* msg)
 {
     return _MAV_RETURN_int16_t(msg,  18);
+}
+
+/**
+ * @brief Get field status from sampledata message
+ *
+ * @return  Sample status
+ */
+static inline int16_t mavlink_msg_sampledata_get_status(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  20);
+}
+
+/**
+ * @brief Get field reversed1 from sampledata message
+ *
+ * @return  Sample reversed1
+ */
+static inline int16_t mavlink_msg_sampledata_get_reversed1(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  22);
+}
+
+/**
+ * @brief Get field reversed2 from sampledata message
+ *
+ * @return  Sample reversed2
+ */
+static inline int16_t mavlink_msg_sampledata_get_reversed2(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  24);
+}
+
+/**
+ * @brief Get field reversed3 from sampledata message
+ *
+ * @return  Sample reversed3
+ */
+static inline int16_t mavlink_msg_sampledata_get_reversed3(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  26);
+}
+
+/**
+ * @brief Get field reversed4 from sampledata message
+ *
+ * @return  Sample reversed4
+ */
+static inline int16_t mavlink_msg_sampledata_get_reversed4(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  28);
+}
+
+/**
+ * @brief Get field reversed5 from sampledata message
+ *
+ * @return  Sample reversed5
+ */
+static inline int16_t mavlink_msg_sampledata_get_reversed5(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  30);
+}
+
+/**
+ * @brief Get field reversed6 from sampledata message
+ *
+ * @return  Sample reversed6
+ */
+static inline int16_t mavlink_msg_sampledata_get_reversed6(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  32);
+}
+
+/**
+ * @brief Get field reversed7 from sampledata message
+ *
+ * @return  Sample reversed7
+ */
+static inline int16_t mavlink_msg_sampledata_get_reversed7(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  34);
+}
+
+/**
+ * @brief Get field reversed8 from sampledata message
+ *
+ * @return  Sample reversed8
+ */
+static inline int16_t mavlink_msg_sampledata_get_reversed8(const mavlink_message_t* msg)
+{
+    return _MAV_RETURN_int16_t(msg,  36);
 }
 
 /**
@@ -427,9 +643,18 @@ static inline void mavlink_msg_sampledata_decode(const mavlink_message_t* msg, m
     sampledata->pitch = mavlink_msg_sampledata_get_pitch(msg);
     sampledata->roll = mavlink_msg_sampledata_get_roll(msg);
     sampledata->yaw = mavlink_msg_sampledata_get_yaw(msg);
-    sampledata->reserved1 = mavlink_msg_sampledata_get_reserved1(msg);
-    sampledata->reserved2 = mavlink_msg_sampledata_get_reserved2(msg);
-    sampledata->reserved3 = mavlink_msg_sampledata_get_reserved3(msg);
+    sampledata->remain = mavlink_msg_sampledata_get_remain(msg);
+    sampledata->speed = mavlink_msg_sampledata_get_speed(msg);
+    sampledata->compass = mavlink_msg_sampledata_get_compass(msg);
+    sampledata->status = mavlink_msg_sampledata_get_status(msg);
+    sampledata->reversed1 = mavlink_msg_sampledata_get_reversed1(msg);
+    sampledata->reversed2 = mavlink_msg_sampledata_get_reversed2(msg);
+    sampledata->reversed3 = mavlink_msg_sampledata_get_reversed3(msg);
+    sampledata->reversed4 = mavlink_msg_sampledata_get_reversed4(msg);
+    sampledata->reversed5 = mavlink_msg_sampledata_get_reversed5(msg);
+    sampledata->reversed6 = mavlink_msg_sampledata_get_reversed6(msg);
+    sampledata->reversed7 = mavlink_msg_sampledata_get_reversed7(msg);
+    sampledata->reversed8 = mavlink_msg_sampledata_get_reversed8(msg);
 #else
         uint8_t len = msg->len < MAVLINK_MSG_ID_SAMPLEDATA_LEN? msg->len : MAVLINK_MSG_ID_SAMPLEDATA_LEN;
         memset(sampledata, 0, MAVLINK_MSG_ID_SAMPLEDATA_LEN);

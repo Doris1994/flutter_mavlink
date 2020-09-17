@@ -7,15 +7,18 @@
 
 uint8_t buffer[BUFFER_LENGTH];
 mavlink_message_t *msg = nullptr;
+mavlink_status_t *g_status = nullptr;
 
 mavlink_system_t mavlink_system = {
    255, // System ID (1-255)253
    MAV_COMP_ID_MISSIONPLANNER  // Component ID (a MAV_COMPONENT value)MAV_COMP_ID_MISSIONPLANNER
 };
-// typedef struct {
-//   uint8_t *buffer;
-//   uint16_t length;
-// } kw_mavlink_msg_buf_t;
+
+typedef struct {
+  int64_t msgId;
+  uint16_t length;
+} kw_mavlink_msg_result_t;
+
 extern "C" {
   __attribute__((visibility("default"))) __attribute__((used))
 
@@ -63,6 +66,26 @@ extern "C" {
     return sample_data;
   }
 
+  int64_t parse_mavlink_char(uint8_t temp,uint8_t newMsg){
+    if(msg == nullptr){
+      msg = (mavlink_message_t *)malloc(sizeof(mavlink_message_t));
+    }
+    else if(newMsg == 1){
+      memset(msg, 0, sizeof(mavlink_message_t));
+    }
+    if(newMsg == 1){
+      if(g_status != nullptr){
+        free(g_status);
+      }
+      g_status = (mavlink_status_t *)malloc(sizeof(mavlink_status_t));
+    }
+    if (mavlink_parse_char(MAVLINK_COMM_0, temp, msg, g_status)) {
+      return (*msg).msgid;
+    }
+    return -1;
+  }
+
+  //已废弃，tcp粘包问题导致消息解析结果不准确
   int64_t decode_mavlink_msg(uint8_t *buf,uint16_t len
   ){
     if(len > 0){

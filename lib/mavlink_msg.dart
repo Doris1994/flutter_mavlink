@@ -13,7 +13,7 @@ class MavlinkManualControlButtons {
   static const int unLock = 32;
   static const int lock = 16;
 
-  static const int manualMode = 1; //手动模式
+  static const int manualMode = 2; //手动模式
   static const int selfStableMode = 8; //自稳模式
   static const int keepDepthMode = 4; //定深模式
 
@@ -30,7 +30,7 @@ class MavlinkManualControlButtons {
   static const int decreasePitch = 47;
 
   static const int keepInput = 48; //输入保持*/
-  static const int controlModeSwitch = 2048; //切换姿态控制模式或运动控制模式
+  static const int controlModeSwitch = 4096; //切换姿态控制模式或运动控制模式
 }
 
 // Example of handling a simple C struct mavlink_heartbeat_t
@@ -99,25 +99,37 @@ class MavlinkManualControl extends Struct {
 
 class MavlinkSampleData extends Struct {
   @Int16()
-  int curr;
+  int curr; //电流/10
 
   @Int16()
-  int volt;
+  int volt; //电压/10
 
   @Int16()
-  int temp;
+  int temp; //温度/10
 
   @Int16()
-  int alit;
+  int alit; //深度/100
 
   @Int16()
-  int pitch;
+  int pitch; //俯仰/100
 
   @Int16()
-  int roll;
+  int roll; //横滚/100
 
   @Int16()
-  int yaw;
+  int yaw; //偏航/100
+
+  @Int16()
+  int remain; //电量/10
+
+  @Int16()
+  int speed; //速度/1000
+
+  @Int16()
+  int compass; //罗盘，跟yaw是一个值
+
+  @Int16()
+  int status; // 收到的按钮状态反馈
 
   @Int16()
   int reserved1;
@@ -127,4 +139,19 @@ class MavlinkSampleData extends Struct {
 
   @Int16()
   int reserved3;
+
+  @Int16()
+  int reserved4; //
+
+  @Int16()
+  int reserved5; //
+
+  @Int16()
+  int reserved6; //
+
+  @Int16()
+  int reserved7; //
+
+  @Int16()
+  int reserved8; //
 }
